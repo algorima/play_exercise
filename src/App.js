@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Exercise from './components/exercise/Exercise';
 import './App.css';
@@ -15,14 +15,26 @@ const data = {
 };
 
 const App = () => {
+  const [answer, setAnswer] = useState([]);
   return (
     <div>
       <Exercise
         data={data}
+        answer={answer}
         isCorrect={null}
-        onAnswerUpdata={() => {}}
+        onAnswerUpdate={(e) => {
+          const { value } = e.target;
+          setAnswer((prevAnswer) => {
+            const answer = [...prevAnswer];
+            if (answer.find((elem) => elem === value)) {
+              return answer.filter((elem) => elem !== value);
+            } else {
+              answer.push(value);
+            }
+            return answer;
+          });
+        }}
         onExerciseSubmit={() => {}}
-        answer={[]}
       />
     </div>
   );
