@@ -9,7 +9,8 @@
     "react-scripts": "^4.0.3",
     "serve": "^12.0.0",
     "styled-components": "^5.0.1",
-    "webpack": "4.44.2"
+    "webpack": "4.44.2",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,6 +50,18 @@
   "lint-staged": {
     "./src/**/*.{js,jsx,ts,tsx}": [
       "npm run check"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
