@@ -1,0 +1,20 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "value-keyword-case": null,
+    "declaration-colon-space-after": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "string-no-newline": null,
+    "function-name-case": null,
+    "selector-type-no-unknown": [
+      true,
+      { "ignoreTypes": ["overlay", "arrow", "tooltip"] }
+    ],
+    "color-hex-case": "lower"
+  }
+}

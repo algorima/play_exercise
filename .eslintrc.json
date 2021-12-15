@@ -1,0 +1,90 @@
+// .eslintrc.json
+
+{
+  "extends": ["react-app", "standard", "prettier"],
+  "plugins": ["react", "prettier", "import"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/no-unresolved": "error",
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "import/no-anonymous-default-export": "off",
+        "react-hooks/exhaustive-deps": 2,
+        "react/prefer-stateless-function": 2,
+        "no-restricted-syntax": [
+          2,
+          {
+            "selector": "ClassDeclaration[superClass.name='Component']",
+            "message": "Class-based React Component is not allowed. Please use Hooks. (https://reactjs.org/docs/hooks-intro.html)"
+          },
+          {
+            "selector": "ClassDeclaration[superClass.object.name='React']ClassDeclaration[superClass.property.name='Component']",
+            "message": "Class-based React Component is not allowed. Please use Hooks. (https://reactjs.org/docs/hooks-intro.html)"
+          }
+        ],
+        "camelcase": [
+          2,
+          {
+            "properties": "never",
+            "ignoreDestructuring": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": ["src/datastory/components/exercise/defaultCode.js"],
+      "rules": { "import/no-unresolved": "off" }
+    },
+    {
+      "files": ["src/test/**/*.js"],
+      "globals": {
+        "browser": "readonly",
+        "$": "readonly",
+        "$$": "readonly",
+        "before": "readonly"
+      },
+      "rules": {
+        "import/default": "off"
+      }
+    }
+  ]
+}
