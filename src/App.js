@@ -16,24 +16,27 @@ const data = {
 
 const App = () => {
   const [answer, setAnswer] = useState([]);
+
+  const handleAnswerUpdate = (e) => {
+    const { value } = e.target;
+    setAnswer((prevAnswer) => {
+      const answer = [...prevAnswer];
+      if (answer.find((elem) => elem === value)) {
+        return answer.filter((elem) => elem !== value);
+      } else {
+        answer.push(value);
+      }
+      return answer;
+    });
+  };
+
   return (
     <div>
       <Exercise
         data={data}
         answer={answer}
         isCorrect={null}
-        onAnswerUpdate={(e) => {
-          const { value } = e.target;
-          setAnswer((prevAnswer) => {
-            const answer = [...prevAnswer];
-            if (answer.find((elem) => elem === value)) {
-              return answer.filter((elem) => elem !== value);
-            } else {
-              answer.push(value);
-            }
-            return answer;
-          });
-        }}
+        onAnswerUpdate={handleAnswerUpdate}
         onExerciseSubmit={() => {}}
       />
     </div>
